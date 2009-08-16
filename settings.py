@@ -33,7 +33,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
 ]
 
-ROOT_URLCONF = 'tzadik.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = [
     os.path.join(os.path.dirname(__file__), "templates")
