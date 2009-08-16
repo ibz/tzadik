@@ -1,0 +1,38 @@
+{% extends "page.html" %}
+
+{% block content %}
+
+<h2>{{ title }}</h2>
+
+<table class="imagelist">
+  {% for photo in photos.object_list %}
+    {% if forloop.counter0|divisibleby:"5" %}
+      <tr>
+    {% endif %}
+    <td>
+      <a title="{{ photo.title }}" href="{{ photo.get_absolute_url }}">
+        <img src="{{ photo.thumbnail_url }}" />
+      </a>
+    </td>
+    {% if forloop.counter|divisibleby:"5" or forloop.last %}
+      </tr>
+    {% endif %}
+  {% endfor %}
+</table>
+
+<table class="navigation">
+<tr>
+    <td class="left">
+    {% if photos.has_previous %}
+        <a title="First page" href="/photo/browse/?page=1">|&lt;</a>
+        <a title="Previous page" href="/photo/browse/?page={{ photos.previous_page_number }}">&lt;&lt; Newer</a>
+    {% endif %}
+    Page {{ photos.number }} of {{ photos.paginator.num_pages }}
+    {% if photos.has_next %}
+        <a title="Next page" href="/photo/browse/?page={{ photos.next_page_number }}">Older &gt;&gt;</a>
+        <a title="Last page" href="/photo/browse/?page={{ photos.paginator.num_pages }}">&gt;|</a>
+    {% endif %}
+    </td>
+</tr>
+</table>
+{% endblock %}

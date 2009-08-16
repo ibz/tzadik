@@ -1,0 +1,17 @@
+
+SITE_NAME = "YOUR SITE NAME HERE"
+SITE_URL = "YOUR SITE URL HERE"
+PHOTOGRAPHER_NAME = "YOUR NAME HERE"
+PHOTOGRAPHER_EMAIL = "YOUR EMAIL HERE"
+
+# Keep the default Flickr API key or get your own here: http://www.flickr.com/services/api/keys/apply/
+FLICKR_KEY = "be9525bae602cc392283e3a9beeae417"
+
+# See available choices here: http://www.postgresql.org/docs/8.1/static/datetime-keywords.html#DATETIME-TIMEZONE-SET-TABLE
+TIME_ZONE = "Asia/Shanghai"
+
+# This is used to provide a seed in secret-key hashing algorithms. Set it to a random string - the longer the better.
+SECRET_KEY = "+l!b)i3!cn!z1(3crq5907a26idw$qn!rzs*!bbeq+=4)ezt4a"
+
+# Set this to True if you want detailed error messages.
+DEBUG = False

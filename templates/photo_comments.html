@@ -1,0 +1,35 @@
+{% for comment in photo.comment_set.all %}
+  <p>
+    On {{ comment.date_posted|date }} at {{ comment.date_posted|time }}
+    {% if comment.url %}
+      <a target="_blank" href="{{ comment.url }}">{{ comment.name }}</a>
+    {% else %}
+      {{ comment.name }}
+    {% endif %}
+    said: <br />
+    {{ comment.text }}
+  </p>
+{% endfor %}
+<form method="POST" action="/photo/{{ photo.id }}/comments/" id="commentform">
+<p>
+  <label for="spam">Are you a human?</label> <a target="_blank" href="http://en.wikipedia.org/wiki/Captcha">(what's this?)</a><br />
+  <input type="text" name="human" id="human" />
+</p>
+<p>
+  <label for="name">Name:</label> (optional)<br />
+  <input type="text" name="name" id="name" value="Anonymous" />
+</p>
+<p>
+  <label for="email">Email:</label> (optional)<br />
+  <input type="text" name="email" id="email" />
+</p>
+<p>
+  <label for="url">URL:</label> (optional)<br />
+  <input type="text" name="url" id="url" /><br />
+</p>
+<p>
+  <label for="text">Comment:</label><br />
+  <textarea name="text" id="text" rows="5" cols="30"></textarea>
+</p>
+<input type="button" value="Say it!" onclick="javascript:submitComment({{ photo.id }});" />
+</form>

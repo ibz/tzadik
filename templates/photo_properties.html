@@ -1,0 +1,16 @@
+<table>
+  {% for p in photo.get_exif_properties.items %}
+    {% if p.1 %}
+      <tr><td>{{ p.0 }}:</td><td>{{ p.1 }}</td></tr>
+    {% endif %}
+  {% endfor %}
+  {% if photo.location %}
+    <tr><td>Location:</td><td><a href="{{ photo.location.get_absolute_url }}">{{ photo.location.name }}</a></td></tr>
+  {% endif %}
+  {% if photo.categories.count %}
+    <tr>
+      <td>Categories:</td>
+      <td>{% for c in photo.categories.all %}<a href="{{ c.get_absolute_url }}">{{ c.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</td>
+    </tr>
+  {% endif %}
+</table>

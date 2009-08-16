@@ -1,0 +1,11 @@
+{% extends "page.html" %}
+
+{% block content %}
+
+<h2>{{ title }}</h2>
+
+{% for f in filters %}
+<p><a href="/photo/browse/{{ filter_keyword }}/{{ f.slug }}/">{{ f.name }}</a> ({{ f.photo__count }})</p>
+{% endfor %}
+
+{% endblock %}

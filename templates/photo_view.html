@@ -1,0 +1,38 @@
+{% extends "page.html" %}
+
+{% block content %}
+{% if photo %}
+  <h2>{{ photo.title }}</h2>
+
+  {% with photo.get_previous_by_date_posted as prev %}
+    {% if prev %}
+      <a href="{{ prev.get_absolute_url }}" title="(click for previous image)">
+    {% endif %}
+    <img id="photo" src="{{ photo.file_url }}" alt="" />
+    {% if prev %}
+      </a>
+    {% endif %}
+  {% endwith %}
+  <div id="properties"></div>
+  <table class="navigation">
+  <tr>
+    <td class="left">
+      posted on {{ photo.date_posted|date }} at {{ photo.date_posted|time }}
+    </td>
+    <td class="right">
+      <a href="#" onclick="toggleProperties({{ photo.id }});">(Properties)</a>
+      <a href="#" onclick="toggleComments({{ photo.id }});">(Comments)</a>
+      <a href="{{ photo.url }}">(View on Flickr)</a>
+      {% with photo.get_next_by_date_posted as next %}
+        {% if next %}
+          <a id="blog_next" href="{{ next.get_absolute_url }}">(Next)</a>
+        {% endif %}
+      {% endwith %}
+    </td>
+  </tr>
+  </table>
+  <div id="comments"></div>
+{% else %}
+  <h2>No photo posted yet. Go to <a href="/_admin/">/admin/</a> and log in to get started.</h2>
+{% endif %}
+{% endblock %}
