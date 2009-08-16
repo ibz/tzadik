@@ -24,13 +24,13 @@
 <tr>
     <td class="left">
     {% if photos.has_previous %}
-        <a title="First page" href="/photo/browse/?page=1">|&lt;</a>
-        <a title="Previous page" href="/photo/browse/?page={{ photos.previous_page_number }}">&lt;&lt; Newer</a>
+        <a title="First page" href="{{ url }}?page=1">|&lt;</a>
+        <a title="Previous page" href="{{ url }}?page={{ photos.previous_page_number }}">&lt;&lt; Newer</a>
     {% endif %}
     Page {{ photos.number }} of {{ photos.paginator.num_pages }}
     {% if photos.has_next %}
-        <a title="Next page" href="/photo/browse/?page={{ photos.next_page_number }}">Older &gt;&gt;</a>
-        <a title="Last page" href="/photo/browse/?page={{ photos.paginator.num_pages }}">&gt;|</a>
+        <a title="Next page" href="{{ url }}?page={{ photos.next_page_number }}">Older &gt;&gt;</a>
+        <a title="Last page" href="{{ url }}?page={{ photos.paginator.num_pages }}">&gt;|</a>
     {% endif %}
     </td>
 </tr>

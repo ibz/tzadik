@@ -78,7 +78,13 @@ def browse(request, filter_keyword=None, filter=None):
     except (EmptyPage, InvalidPage):
         photos = paginator.page(paginator.num_pages)
 
-    return render("photo_browse.html", request, {'photos': photos})
+    if filter_keyword and filter:
+        url = "/browse/%s/%s/" % (filter_keyword, filter)
+    else:
+        url = "/browse/"
+
+    return render("photo_browse.html", request, {'url': url,
+                                                 'photos': photos})
 
 def categories(request):
     categories = models.Category.objects.annotate(Count('photo'))

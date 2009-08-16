@@ -14,7 +14,7 @@ class Location(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return "/photo/browse/location/%s/" % self.slug
+        return "/browse/location/%s/" % self.slug
 
 class Category(models.Model):
     name = models.CharField(max_length=50)
@@ -28,7 +28,7 @@ class Category(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return "/photo/browse/category/%s/" % self.slug
+        return "/browse/category/%s/" % self.slug
 
 class Photo(models.Model):
     title = models.CharField(max_length=100)
