@@ -8,7 +8,7 @@ ADMINS = ((PHOTOGRAPHER_NAME, PHOTOGRAPHER_EMAIL),)
 MANAGERS = ADMINS
 
 DATABASE_ENGINE = 'sqlite3'
-DATABASE_NAME = 'tzadik.db'
+DATABASE_NAME = os.path.join(os.path.dirname(__file__), "tzadik.db")
 DATABASE_USER = ''
 DATABASE_PASSWORD = ''
 DATABASE_HOST = ''
