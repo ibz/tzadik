@@ -83,20 +83,20 @@ def browse(request, filter_keyword=None, filter=None):
     else:
         url = "/browse/"
 
-    return render("photo_browse.html", request, {'url': url,
-                                                 'photos': photos})
+    return render("browse.html", request, {'url': url,
+                                           'photos': photos})
 
 def categories(request):
     categories = models.Category.objects.annotate(Count('photo'))
 
-    return render("photo_filters.html", request, {'title': "Categories", 'filter_keyword': 'category',
-                                                  'filters': categories})
+    return render("filters.html", request, {'title': "Categories", 'filter_keyword': 'category',
+                                            'filters': categories})
 
 def locations(request):
     locations = models.Location.objects.annotate(Count('photo'))
 
-    return render("photo_filters.html", request, {'title': "Locations", 'filter_keyword': 'location',
-                                                  'filters': locations})
+    return render("filters.html", request, {'title': "Locations", 'filter_keyword': 'location',
+                                            'filters': locations})
 
 def feed(request):
     photos = models.Photo.objects.all()[:20]
